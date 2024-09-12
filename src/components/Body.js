@@ -24,12 +24,12 @@ const Body =()=>{
 
     const fetchData=async()=>{
         const data= await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
         );
         const json=await data.json();
         console.log(json);
-        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         console.log("listOfRestaurants:", listOfRestaurants);
         console.log("FilteredRestaurants:", filteredRestaurants);
     }
@@ -52,7 +52,7 @@ const Body =()=>{
     const {loggedInUser}=useContext(UserContext);
 
 
-    return listOfRestaurants.length===0 ?<Shimmer /> :  (
+    return filteredRestaurants.length===0 ?<Shimmer /> :  (
         <div className="body">
             <div className="filter flex">
                 <div className="search m-4 p-4">
